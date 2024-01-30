@@ -32,7 +32,7 @@
         </dependency>
         <dependency>
             <groupId>com.javarush</groupId>
-            <artifactId>game-engine</artifactId>
+            <artifactId>desktop-game-engine</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
