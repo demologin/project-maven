@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: jenkins
+Created-By: Apache Maven 3.6.0
+Build-Jdk: 1.8.0_201
+
+Class-Path: commons-lang3-3.12.0.jar javafx-controls-21.0.1.jar javafx-graphics-21.0.1.jar javafx-base-21.0.1.jar desktop-game-engine-1.0.jar
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
