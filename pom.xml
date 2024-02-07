@@ -7,8 +7,7 @@
     <groupId>jru.module3</groupId>
     <artifactId>project-maven</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
-
+   <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
@@ -30,6 +29,8 @@
             <groupId>com.javarush</groupId>
             <artifactId>desktop-game-engine</artifactId>
             <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/desktop-game-engine.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -68,11 +69,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.1</version> <!-- Установите актуальную версию -->
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -103,7 +99,7 @@
                             <Main-Class>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</Main-Class>
                         </manifest>
                         <manifestEntries>
-                            <Class-Path>./</Class-Path>
+                            <Class-Path>./ lib/desktop-game-engine-1.0.jar</Class-Path>
                             <Rsrc-Main-Class>com.javarush.games.racer.RacerGame</Rsrc-Main-Class>
                         </manifestEntries>
                     </archive>
