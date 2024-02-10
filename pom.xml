@@ -13,6 +13,13 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>local-repo</id>
+            <url>file://${project.basedir}/local-rep</url>
+        </repository>
+    </repositories>
+
 
     <dependencies>
         <dependency>
@@ -126,7 +133,7 @@
                 <executions>
                     <execution>
                         <id>install-external-jar</id>
-                        <phase>initialize</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
@@ -136,6 +143,8 @@
                             <artifactId>desktop-game-engine</artifactId>
                             <version>1.0</version>
                             <packaging>jar</packaging>
+                            <generatePom>true</generatePom>
+                            <localRepositoryPath>${project.basedir}/local-rep</localRepositoryPath>
                         </configuration>
                     </execution>
                 </executions>
