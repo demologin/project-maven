@@ -53,7 +53,7 @@ public class RacerGame extends Game {
         finishLine = new FinishLine();
         progressBar = new ProgressBar(RACE_GOAL_CARS_COUNT);
         drawScene();
-        setTurnTimer(40);
+        setTurnTimer(160);
         isGameStopped = false;
         score = 3500;
     }
