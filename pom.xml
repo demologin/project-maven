@@ -52,6 +52,8 @@
             <groupId>com.javarush</groupId>
             <artifactId>desktop-game-engine</artifactId>
             <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/desktop-game-engine.jar</systemPath>
         </dependency>
     </dependencies>
 
