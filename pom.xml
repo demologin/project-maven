@@ -45,34 +45,21 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.build.directory}/dependency</directory>
+                <targetPath>lib</targetPath>
+            </resource>
+        </resources>
+
         <plugins>
-            <!-- Usual compilation -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>3.1.2</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
-                            <includeScope>compile</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -81,7 +68,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
+                            <classpathPrefix>lib</classpathPrefix>
                             <mainClass>org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader</mainClass>
                         </manifest>
                         <manifestEntries>
@@ -91,12 +78,13 @@
                     </archive>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.7.1</version>
                 <configuration>
-                    <outputDirectory>${project.build.directory}/dep</outputDirectory>
+                    <outputDirectory>${project.build.directory}/dependency</outputDirectory>
                     <includeScope>compile</includeScope>
                 </configuration>
                 <executions>
@@ -109,6 +97,27 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>StrangeTest</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- Usual compilation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
             <!-- Run java-fx app over Maven -->
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -118,23 +127,8 @@
                     <mainClass>com.javarush.games.racer.RacerGame</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
-                <configuration>
-                    <excludes>
-                        <exclude>StrangeTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>${project.build.directory}/dep</directory>
-                <targetPath>lib</targetPath>
-            </resource>
-        </resources>
     </build>
+
 
 </project>
